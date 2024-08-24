@@ -10,6 +10,7 @@ from source.viewEventSchema import ViewEventSchemaInput
 from source.createEvent import createEvent
 from source.signUpEvent import signUpEvent
 from source.viewEvent import viewEvent
+from source.getAllEvents import getAllEvents
 
 app = FastAPI()
 
@@ -27,6 +28,11 @@ def sign_up_event(input_value: SignUpEventSchemaInput):
 @app.post("/api/viewEvent")
 def view_event(input_value: ViewEventSchemaInput):
     return viewEvent(input_value)
+
+
+@app.get("/api/getAllEvents")
+def get_all_events():
+    return getAllEvents()
 
 
 if __name__ == "__main__":

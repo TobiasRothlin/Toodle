@@ -44,3 +44,30 @@ def addEvent(event) -> Event:
                  show_number_of_guests=res[0][6], 
                  is_mail_required=res[0][7], 
                  is_phone_number_required=res[0][8])
+
+
+def getAllEventsSupport():
+    mydb = mysql.connector.connect(
+        host="db",
+        user="root",
+        password="rootpassword",
+        database="ToodleEventData"
+    )
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM Events ORDER BY CreatedAt ASC")
+    res = mycursor.fetchall()
+    mycursor.close()
+    mydb.close()
+    return res
+
+
+def getAllEvents():
+    res = getAllEventsSupport()
+    print(f"-GetAllEvents-- Res:{res}")
+    events = []
+    for event in res:
+        events.append({
+            "Id": event[0],
+            "Name": event[1]
+        })
+    return events
