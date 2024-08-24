@@ -22,10 +22,14 @@ USE `ToodleEventData`;
 CREATE TABLE IF NOT EXISTS `Events` (
   `ID` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `EventName` VARCHAR(45) NOT NULL,
-  `SignUpDeadLine` DATE NULL,
+  `Description` VARCHAR(256) NOT NULL,
+  `MaxAttendees` INT UNSIGNED NOT NULL,
   `Eventdate` DATE NULL,
-  `Partners` BOOLEAN DEFAULT FALSE,
- 
+  `SignUpDeadLine` DATE NULL,
+  `ShowNumberOfGuests` BOOLEAN DEFAULT FALSE,
+  `IsMailRequired` BOOLEAN DEFAULT FALSE,
+  `IsPhoneNumberRequired` BOOLEAN DEFAULT FALSE,
+  `CreatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`));
  
  

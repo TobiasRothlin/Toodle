@@ -8,16 +8,20 @@ class CreateEventSchemaInput(BaseModel):
     MaxAttendees: int
     Date: datetime
     SineUpDeadline: datetime
-    RequiredInformation: List[str]
-    OptionalInformation: List[str]
+    showNumberOfGuests: bool
+    isMailRequired: bool
+    isPhoneNumberRequired: bool
+    
 
 
 class CreateEventSchemaOutput(BaseModel):
+    Id: int
     Name: str
     Description: str
     MaxAttendees: int
     Date: datetime
     SineUpDeadline: datetime
-    RequiredInformation: List[str]
-    OptionalInformation: List[str]
-    Id: str
+    showNumberOfGuests: bool
+    isMailRequired: bool
+    isPhoneNumberRequired: bool
+    

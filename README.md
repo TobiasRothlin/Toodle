@@ -25,7 +25,6 @@ An Opensource alternative to Doodle
       ```
       venv\Scripts\activate
       ```
-
 4. Install the required dependencies:
     ```
     pip install -r requirements.txt
