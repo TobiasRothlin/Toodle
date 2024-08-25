@@ -10,7 +10,7 @@ const EventView = () => {
 
     const fetchEvents = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/getAllEvents');
+            const response = await fetch('/api/getAllEvents');
             const data = await response.json();
             setEvents(data);
         } catch (error) {
@@ -30,7 +30,7 @@ const EventView = () => {
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/viewEvent', {
+                const response = await fetch('/api/viewEvent', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ const EventView = () => {
 
     return (
         <div className='pl-5 pr-10 pb-10 pt-5 rounded-lg bg-gray-950 bg-opacity-5 shadow-slate-300 shadow-md w-96'>
-            <h1 className='text-2xl mb-10'>AllEvents</h1>
+            <h1 className='text-2xl mb-10'>View All Events</h1>
             <div>
             {events.map((event) => (
                 <div key={event.Id}>

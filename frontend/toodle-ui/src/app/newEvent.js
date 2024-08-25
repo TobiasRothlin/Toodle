@@ -67,7 +67,7 @@ const NewEvent = () => {
         e.preventDefault();
         // Add your logic here to handle the submission of the new event
         console.log('New event submitted:', { title, description, date });
-        const response = await fetch('http://localhost:8000/api/createEvent', {
+        const response = await fetch('/api/createEvent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
