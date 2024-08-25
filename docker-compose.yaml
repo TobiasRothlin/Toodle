@@ -4,10 +4,10 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     container_name: backend-container
     ports:
-      - "8000:8000"
+      - "8001:8000"
     depends_on:
       - db
 
@@ -19,7 +19,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
-      - "3307:3306"
+      - "8002:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d
@@ -29,7 +29,7 @@ services:
       context: ./frontend  # Path to the frontend directory containing the Dockerfile
     container_name: react-frontend
     ports:
-      - "3000:3000"
+      - "8003:3000"
     environment:
       NODE_ENV: production
     depends_on:
@@ -39,7 +39,7 @@ services:
     image: nginx:1.19
     container_name: reverse-proxy
     ports:
-      - "8080:8080"
+      - "8004:8080"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
