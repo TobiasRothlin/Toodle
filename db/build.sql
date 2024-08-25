@@ -40,12 +40,15 @@ CREATE TABLE IF NOT EXISTS `SignUp` (
   `ID` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NOT NULL,
   `SurName` VARCHAR(45) NOT NULL,
-  `Events_ID` INT UNSIGNED NOT NULL,
-  `Partners` INT UNSIGNED  NULL,
-  PRIMARY KEY (`ID`, `Events_ID`),
-  INDEX `fk_SignUp_Events_idx` (`Events_ID` ASC) VISIBLE,
+  `Event_ID` INT UNSIGNED NOT NULL,
+  `NumberOfGuests` INT UNSIGNED  NULL,
+  `Mail` VARCHAR(45) NULL,
+  `PhoneNumber` VARCHAR(45) NULL,
+  `CreatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`, `Event_ID`),
+  INDEX `fk_SignUp_Event_idx` (`Event_ID` ASC) VISIBLE,
   CONSTRAINT `fk_SignUp_Events`
-    FOREIGN KEY (`Events_ID`)
+    FOREIGN KEY (`Event_ID`)
     REFERENCES `Events` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

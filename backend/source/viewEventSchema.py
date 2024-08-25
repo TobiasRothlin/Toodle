@@ -3,6 +3,7 @@ from typing import List, Optional
 from datetime import datetime
 
 class Attendee(BaseModel):
+    Id: int
     Name: str
     Surname: str
     Email: str
@@ -11,8 +12,7 @@ class Attendee(BaseModel):
     SignUpDate: datetime
 
 class ViewEventSchemaInput(BaseModel):
-    Id: Optional[str] = None
-    Name: Optional[str] = None
+    Id: int
 
 class ViewEventSchemaOutput(BaseModel):
     Id: int
@@ -21,7 +21,5 @@ class ViewEventSchemaOutput(BaseModel):
     MaxAttendees: int
     Date: datetime
     SineUpDeadline: datetime
-    showNumberOfGuests: bool
-    isMailRequired: bool
-    isPhoneNumberRequired: bool
+
     Attendees: List[Attendee]
