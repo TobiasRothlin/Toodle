@@ -18,6 +18,22 @@ const EventView = () => {
         }
     };
 
+    const downloadEvent = async (eventId) => {
+        try {
+            const response = await fetch('/api/getEventAsCSV', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ Id: eventId })
+            });
+            const data = await response.data;
+            console.log(data);
+        } catch (error) {
+            console.error('Error downloading event:', error);
+        }
+    }
+
     const toggleExpand = (eventId) => {
         setExpandedEventId(expandedEventId === eventId ? null : eventId);
     };

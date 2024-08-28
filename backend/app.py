@@ -1,5 +1,5 @@
 from typing import Union
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -11,6 +11,7 @@ from source.viewEventSchema import ViewEventSchemaInput
 from source.createEvent import createEvent
 from source.signUpEvent import signUpEvent
 from source.viewEvent import viewEvent
+from source.getEventAsCSV import getEventAsCSV
 from source.getAllEvents import getAllEvents
 from source.getHtmlSignUpPage import getHtmlSignUpPage
 
@@ -30,6 +31,12 @@ def sign_up_event(input_value: SignUpEventSchemaInput):
 @app.post("/viewEvent")
 def view_event(input_value: ViewEventSchemaInput):
     return viewEvent(input_value)
+
+@app.post("/getEventAsCSV")
+def view_event(input_value: ViewEventSchemaInput):
+    csv = getEventAsCSV(input_value)
+    return csv
+    
 
 
 @app.get("/getAllEvents")
